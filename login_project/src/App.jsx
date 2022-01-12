@@ -1,45 +1,65 @@
 import { useState } from 'react'
-import logo from './logo.svg'
-import './App.css'
+import React from 'react'
+import './index.css'
+import clsx from 'clsx';
 
-function App() {
-  const [count, setCount] = useState(0)
 
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Hello Vite + React!</p>
-        <p>
-          <button type="button" onClick={() => setCount((count) => count + 1)}>
-            count is: {count}
-          </button>
-        </p>
-        <p>
-          Edit <code>App.jsx</code> and save to test HMR updates.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-          {' | '}
-          <a
-            className="App-link"
-            href="https://vitejs.dev/guide/features.html"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Vite Docs
-          </a>
-        </p>
-      </header>
+function Card({children, className}) {
+  return(
+    <div className={clsx('p-4 rounded-lg w-full text-center shadow',className)}>
+      {children}
     </div>
   )
+}
+
+function App() {
+  return (
+    <div className='text-white px-8'>
+      <article className='pt-24 space-y-4 text-center'>
+        <h1 className='font-bold text-3xl'>
+          Learn to code by watching others
+        </h1>
+
+        <p>
+          See how experienced developers solve problems in real-time. Watching
+          scripted tutorials is great, but understanding how developers think is
+          invaluable.
+        </p>
+      </article>
+
+      <section className='mt-16 grid gap-6'>
+        {/* Form Title */}
+        <Card className='bg-blue'>
+          <p className='px-8'>     
+            <b>Try it free 7 days </b>     
+            then $20/mo. thereafter
+          </p>
+        </Card>
+
+        {/* Form Menu */}
+        <Card className='bg-white text-blue-dark'>
+          <form>
+            {/* First Name */}
+            <div className='relative flex item-center'>
+              <label htmlFor="firstName" className='absolute p-3'>First Name</label>
+              <input 
+                type="text" 
+                name="firstName" 
+                id="firstName" 
+                className='border-2 w-full rounded p-3'
+              />
+            </div>
+          </form>
+        </Card>
+
+
+
+
+      </section>
+
+    </div>
+  )
+
 }
 
 export default App
