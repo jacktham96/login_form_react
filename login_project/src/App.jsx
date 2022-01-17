@@ -53,9 +53,13 @@ function TextField({id,label}) {
 
 function App() {
   return (
-    <div className='text-white px-8'>
-      <article className='pt-24 space-y-4 text-center'>
-        <h1 className='font-bold text-3xl'>
+    <div className={clsx('h-full text-white px-8 space-y-16 gap-16' , 
+                        'md:flex md:items-center md: justify-center mx-auto max-w-7xl ')}>
+
+      <article className={clsx('pt-24 space-y-4 text-center flex-1 ', 
+                               'md:text-left md:pt-0')}>
+
+        <h1 className='font-bold text-3xl md:text-5xl'>
           Learn to code by watching others
         </h1>
 
@@ -66,7 +70,7 @@ function App() {
         </p>
       </article>
 
-      <section className='py-12 grid gap-6 '>
+      <section className='grid gap-6 sm:flex-1'>
         {/* Form Title */}
         <Card className='bg-blue'>
           <p className='px-8'>     
