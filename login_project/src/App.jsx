@@ -12,6 +12,45 @@ function Card({children, className}) {
   )
 }
 
+
+function Button({children, className}){
+  return(
+    <button className={clsx('bg-green text-center w-full rounded-lg shadow-solid p-5',className)}>
+      {children}
+    </button>
+  )
+}
+
+
+
+
+function TextField({id,label}) {
+  
+  const [value, setValue] = useState('')
+
+  return(
+    <div className='relative flex item-center'>
+      
+      <label 
+        htmlFor={id}
+        className={clsx('absolute p-3', value !== "" && 'opacity-0' )}
+      >
+        {label}
+      </label>
+
+
+      <input 
+        type="text" 
+        name={id} 
+        id={id}
+        className='border-2 w-full rounded p-3'
+        onChange={(event) => setValue(event.target.value)}
+      />
+  </div>
+  ) 
+
+}
+
 function App() {
   return (
     <div className='text-white px-8'>
@@ -27,7 +66,7 @@ function App() {
         </p>
       </article>
 
-      <section className='mt-16 grid gap-6'>
+      <section className='py-12 grid gap-6 '>
         {/* Form Title */}
         <Card className='bg-blue'>
           <p className='px-8'>     
@@ -38,17 +77,27 @@ function App() {
 
         {/* Form Menu */}
         <Card className='bg-white text-blue-dark'>
-          <form>
-            {/* First Name */}
-            <div className='relative flex item-center'>
-              <label htmlFor="firstName" className='absolute p-3'>First Name</label>
-              <input 
-                type="text" 
-                name="firstName" 
-                id="firstName" 
-                className='border-2 w-full rounded p-3'
-              />
+          <form className='space-y-4'>
+            <TextField id={'firstName'} label={'First Name'}/>
+            <TextField id={'lastName'} label={'Last Name'}/>
+            <TextField id={'Email'} label={'Email'}/>
+            <TextField id={'Password'} label={'Password'}/>
+
+            {/* Submit Button */}
+            <Button className={'text-white'}>
+              Claim your free trial
+            </Button>
+
+            {/* Term and Condition */}
+            <div>
+              <p className='text-blue-dark text-sm p-2'>
+                By clicking the button you are agreeing to our{" "}
+                <a href="#" className='text-red font-bold'>
+                   Term and Services
+                </a>
+              </p>
             </div>
+
           </form>
         </Card>
 

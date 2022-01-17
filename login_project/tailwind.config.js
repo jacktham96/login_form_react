@@ -17,6 +17,7 @@ module.exports = {
 
       boxShadow: {
         DEFAULT: '0px 8px 0px rgba(0, 0, 0, 0.14688)',
+        solid: 'inset 0px -4px 0px rgba(0,0,0,0.0908818)'
       }
     }
   },
