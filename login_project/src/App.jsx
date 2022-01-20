@@ -52,6 +52,48 @@ function TextField({id,label}) {
 }
 
 function App() {
+
+  function onSubmit(event) {
+    event.preventDefault();
+    const formData = new FormData(event.target)
+    const data = Object.fromEntries(formData) //method transforms a list of key-value pairs into an object.
+    
+    for(let [key , value] of formData.entries()) {
+      const isFilled = Boolean(value);
+      console.log([key , isFilled]);
+    }
+
+  }
+
+  const [formState , setFormState] = useState ([
+    {id : 'firstName' ,
+     label: 'First Name' , 
+     errorMsg:'First Name cannot be empty' , 
+     error : 'false'
+    } ,
+
+    {id : 'lastName' , 
+    label: 'Last Name' , 
+    errorMsg:'Last Name cannot be empty' , 
+    error : 'false'
+    } ,
+
+    {id : 'Email' , 
+    label: 'Email' , 
+    errorMsg:'This is not an email' ,
+    error : 'false'
+    } ,
+
+    {id : 'Password' , 
+    label: 'Password' , 
+    errorMsg:'Password cannot be empty' ,
+    error : 'false'
+    } ,
+  ])
+
+
+
+
   return (
     <div className={clsx('h-full text-white px-8 space-y-16 gap-16' , 
                         'md:flex md:items-center md: justify-center mx-auto max-w-7xl ')}>
@@ -81,11 +123,17 @@ function App() {
 
         {/* Form Menu */}
         <Card className='bg-white text-blue-dark'>
-          <form className='space-y-4'>
-            <TextField id={'firstName'} label={'First Name'}/>
-            <TextField id={'lastName'} label={'Last Name'}/>
-            <TextField id={'Email'} label={'Email'}/>
-            <TextField id={'Password'} label={'Password'}/>
+          <form className='space-y-4' onSubmit={onSubmit}>
+
+            {formState.map(({id , label , errorMsg , error})=>(
+              <TextField 
+                key={id} 
+                id={id} 
+                label={label}
+                errorMsg={error && errorMsg} // 假設發生 error 時把 errorMsg 顯示出來
+              />
+            ))}
+
 
             {/* Submit Button */}
             <Button className={'text-white'}>
