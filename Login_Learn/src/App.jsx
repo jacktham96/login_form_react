@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import './index.css'
 import clsx from 'clsx';
+import { ReactComponent as ErrorIcon } from './images/warning.svg'
 
 function Card({children , className}) {
   return(
@@ -53,8 +54,13 @@ function TextField({id , label , error}) {
           )}
           
       />
+      {error && (
+        <ErrorIcon className='absolute right-0 mr-3 '/>
+      )}
+
     </div>
-    
+
+
     {error && (
       <div className='flex justify-end'>
         <span className='text-xs text-red mt-1'>{error}</span>
