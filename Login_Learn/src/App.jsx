@@ -2,7 +2,6 @@ import { useState } from 'react'
 import './index.css'
 import clsx from 'clsx';
 
-
 function Card({children , className}) {
   return(
     <div className={clsx(
